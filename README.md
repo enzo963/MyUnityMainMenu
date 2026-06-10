@@ -8,138 +8,105 @@ A fully modular and production-ready **Main Menu System** built in Unity, featur
 
 ---
 
-##  Demo Preview
+##  Demo & Previews
 
->  *Main Menu Animation Preview*
-
-![Main Menu GIF](assets/main-menu.gif)
-
->  *Settings System Preview*
-
-![Settings GIF](assets/settings-menu.gif)
+|  Main Menu Animation |  Settings System Preview |
+| :---: | :---: |
+| ![Main Menu GIF](assets/main-menu.gif) | ![Settings GIF](assets/settings-menu.gif) |
 
 ---
 
 ##  Screenshots
 
-###  Main Menu
-![Main Menu](assets/main-menu.png)
+|  Main Menu |  Audio Settings |
+| :---: | :---: |
+| ![Main Menu](assets/main-menu.png) | ![Audio Settings](assets/audio-settings.png) |
 
-###  Audio Settings
-![Audio Settings](assets/audio-settings.png)
-
-###  Graphics Settings
-![Graphics Settings](assets/graphics-settings.png)
-
----
-
-##  Features
-
--  Full Main Menu System (New / Load / Exit Game)
--  Smooth navigation between menus
--  Audio system with volume control + saving
--  Gameplay settings (toggles & sliders)
--  Graphics settings:
-  - Resolution system
-  - Quality settings
-  - Fullscreen toggle
-  - Brightness control
--  Persistent settings saving (PlayerPrefs)
--  Reset-to-default functionality
--  Clean modular architecture (easy to expand)
+|  Graphics Settings |
+| :---: |
+| ![Graphics Settings](assets/graphics-settings.png) |
 
 ---
 
-##  Main Menu System
+##  Key Features
 
-- Designed clean and modern UI layout
-- Implemented New Game / Load Game popups
-- Exit game functionality
-- Fully connected UI buttons with scripts
-
----
-
-##  Audio System
-
-- Volume slider linked to Audio Mixer / Audio Source
-- Real-time volume adjustment
-- Save & load volume settings
-- Reset to default functionality
+*   **Full Main Menu Workflow:** Ready-to-use New Game, Load Game, and Exit functionalities.
+*   **Smooth Navigation:** UI flow designed for seamless transitions between screens.
+*   **Advanced Audio System:** Real-time volume control linked with Audio Mixers + local saving.
+*   **Graphics & Display Management:**
+    *   Dynamic resolution detection & automatic dropdown population.
+    *   Runtime resolution switching & Fullscreen toggles.
+    *   Quality presets control & Brightness adjustment.
+*   **Data Persistence:** Automatic saving and loading using `PlayerPrefs`.
+*   **Smart Defaults:** Quick "Reset to Default" options for all systems.
+*   **Clean Architecture:** Highly decoupled, modular, and extremely easy to scale.
 
 ---
 
-##  Gameplay Settings
+##  System Breakdown
 
-- Toggle-based gameplay customization
-- Slider-based adjustments
-- Centralized menu controller integration
-- Reset system for all gameplay values
+###  Architecture & Core Logic
+*   **Modular Controller:** Separated logic blocks per settings category (Audio, Graphics, Gameplay).
+*   **Decoupled UI:** UI presentation layers are fully separated from core game logic for easier maintenance.
 
----
+###  Audio & Gameplay
+*   Sliders dynamically mapped to `AudioMixer` groups.
+*   Toggle and slider systems built for flexible gameplay customization.
 
-##  Graphics System
-
-- Resolution detection & dropdown population
-- Runtime resolution switching
-- Fullscreen toggle system
-- Quality settings control
-- Brightness slider system
-- Apply / Save system
-
----
-
-##  System Architecture
-
-- Modular menu controller system
-- Separated logic per settings category
-- UI decoupled from core logic
-- Easy scalability for future updates
-
----
-
-##  How to Run
-
-1. Clone the repository
-2. Open project in Unity (2022+ recommended)
-3. Load MainMenu scene
-4. Press Play
-
----
-
-##  Assets Structure
-
-assets/
-├── main-menu.png
-├── main-menu.gif
-├── settings-menu.gif
-├── audio-settings.png
-├── graphics-settings.png
-
+###  Graphics Setup
+*   Grabs native hardware capabilities to populate configurations at runtime.
+*   Includes an efficient **Apply / Save** pipeline to prevent accidental changes.
 
 ---
 
 ##  Tech Stack
 
-- Unity Engine
-- C#
-- Unity UI (UGUI)
-- PlayerPrefs (Data Saving)
+*   **Engine:** Unity Engine (2022+)
+*   **Language:** C#
+*   **UI System:** Unity UI (UGUI)
+*   **Storage:** PlayerPrefs
 
 ---
 
-##  Notes
+##  Project Structure (Assets)
 
-This system is designed to be reusable and scalable for indie and commercial game projects.  
-It can be easily integrated into full game pipelines.
+```text
+assets/
+├── main-menu.gif
+├── settings-menu.gif
+├── main-menu.png
+├── audio-settings.png
+└── graphics-settings.png
 
----
+# How to Run
 
-##  Future Improvements
+Clone the repository to your local machine.
+Open the project using Unity 2022 or newer.
+Navigate to the scenes folder and open the MainMenu scene.
+Press Play  and enjoy!
 
-- Add animation transitions (UI tweening)
-- Add localization support (multi-language)
-- Add input remapping system
-- Add cloud save support
 
----
+# Future Improvements
+[ ] Add smooth UI Tweening animations (e.g., LeanTween / DOTween).
+[ ] Integrate full Localization support (Multi-language system).
+[ ] Implement a custom Input Remapping system.
+[ ] Add Cloud Save support.
+
+ Note: This system was built with flexibility in mind. It is fully reusable and can be integrated into any indie or commercial pipeline with ease.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
