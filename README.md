@@ -77,6 +77,7 @@ assets/
 ├── main-menu.png
 ├── audio-settings.png
 └── graphics-settings.png
+```
 
 # How to Run
 
