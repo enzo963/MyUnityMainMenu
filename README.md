@@ -79,7 +79,7 @@ assets/
 └── graphics-settings.png
 ```
 
-# How to Run
+## How to Run
 
 Clone the repository to your local machine.
 Open the project using Unity 2022 or newer.
@@ -87,7 +87,7 @@ Navigate to the scenes folder and open the MainMenu scene.
 Press Play  and enjoy!
 
 
-# Future Improvements
+## Future Improvements
 [ ] Add smooth UI Tweening animations (e.g., LeanTween / DOTween).
 [ ] Integrate full Localization support (Multi-language system).
 [ ] Implement a custom Input Remapping system.
