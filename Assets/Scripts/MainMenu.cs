@@ -30,7 +30,6 @@ public class MainMenu : MonoBehaviour
 
 
     [Header ("Toggle Settings")] //---------------------------------------------------------------------------------------
-
     [SerializeField] private Toggle invertYToggle = null;
 
 
@@ -42,11 +41,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private TMP_Text brightnessTextValue = null;
     [SerializeField] private float defaultBrightness = 1;
 
+
+
     [Space(10)]
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] private Toggle fullScreenToggle;
-
-
 
 
 
@@ -58,6 +57,8 @@ public class MainMenu : MonoBehaviour
     [Header("Resolution Dropdowns")] //-----------------------------------------------------------------------------------
     public TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
+
+
 
     private void Start()
     {
@@ -84,6 +85,8 @@ public class MainMenu : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
 
+
+        LoadSettings();
     }
 
 
@@ -98,7 +101,7 @@ public class MainMenu : MonoBehaviour
 
 
     [Header ("Comfirmation")] //-----------------------------------------------------------------------------------------
-    [SerializeField] private GameObject comfirmationPrompt = null;
+    //[SerializeField] private GameObject comfirmationPrompt = null;
 
 
 
@@ -147,7 +150,8 @@ public class MainMenu : MonoBehaviour
     public void VolumeApply()
     {
         PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
-        StartCoroutine(ConfirmationBox());
+        PlayerPrefs.Save();
+        //StartCoroutine(ConfirmationBox());
     }
 
 
@@ -170,8 +174,9 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetInt("masterInvertY", 0);
             // Invert Y is off
         }
-        PlayerPrefs.SetFloat("masterSen", mainControllerSen);
-        StartCoroutine(ConfirmationBox());
+        PlayerPrefs.SetInt("masterSen", mainControllerSen);
+        PlayerPrefs.Save();
+        // StartCoroutine(ConfirmationBox());
     }
 
 
@@ -214,7 +219,8 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("masterFullScreen", _isFullScreen ? 1 : 0);
         Screen.fullScreen = _isFullScreen;
 
-        StartCoroutine(ConfirmationBox());
+        PlayerPrefs.Save();
+        //StartCoroutine(ConfirmationBox());
     }
 
 
@@ -237,9 +243,9 @@ public class MainMenu : MonoBehaviour
 
             Resolution currentResolution = Screen.currentResolution;
             Screen.SetResolution(currentResolution.width, currentResolution.height, false);
-            resolutionDropdown.value = resolutions.Length;
+            //resolutionDropdown.value = resolutions.Length - 1;
 
-
+            GraphicsApply();
         }
 
         if (MenuType == "Audio")
@@ -262,13 +268,99 @@ public class MainMenu : MonoBehaviour
     }
 
 
-
-    public IEnumerator ConfirmationBox()
+    private void LoadSettings()
     {
-        comfirmationPrompt.SetActive(true);
-        yield return new WaitForSeconds(2);
-        comfirmationPrompt.SetActive(false);
+        if (PlayerPrefs.HasKey("masterVolume"))
+        {
+            float volume = PlayerPrefs.GetFloat("masterVolume");
+            AudioListener.volume = volume;
+            volumeSlider.value = volume;
+            volumeTextValue.text = volume.ToString("0.0");
+        }
+
+
+        if (PlayerPrefs.HasKey("masterSen"))
+        {
+            mainControllerSen = PlayerPrefs.GetInt("masterSen");
+            controllerSenSlider.value = mainControllerSen;
+            controllerSenTextValue.text = mainControllerSen.ToString("0");
+        }
+
+
+        if (PlayerPrefs.HasKey("masterInvertY"))
+        {
+            invertYToggle.isOn = PlayerPrefs.GetInt("masterInvertY") == 1;
+        }
+
+
+
+        if (PlayerPrefs.HasKey("masterQuality"))
+        {
+            _qualityLevel = PlayerPrefs.GetInt("masterQuality");
+            qualityDropdown.value = _qualityLevel;
+            QualitySettings.SetQualityLevel(_qualityLevel);
+        }
+
+
+        if (PlayerPrefs.HasKey("masterFullScreen"))
+        {
+            _isFullScreen = PlayerPrefs.GetInt("masterFullScreen") == 1;
+            fullScreenToggle.isOn = _isFullScreen;
+            Screen.fullScreen = _isFullScreen;
+        }
+
+
+
+        if (PlayerPrefs.HasKey("masterBrightness"))
+        {
+            _brightnessLevel = PlayerPrefs.GetFloat("masterBrightness");
+            brightnessSlider.value = _brightnessLevel;
+            brightnessTextValue.text = _brightnessLevel.ToString("0.0");
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+    //public IEnumerator ConfirmationBox()
+    //{
+    //    comfirmationPrompt.SetActive(true);
+    //    yield return new WaitForSeconds(2);
+    //    comfirmationPrompt.SetActive(false);
+    //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
